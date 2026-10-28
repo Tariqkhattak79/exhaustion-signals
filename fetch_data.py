@@ -11,7 +11,8 @@ if os.path.exists('symbols.txt'):
         
     for sym in syms:
         try:
-            df = pt.download(sym, period="400d")
+            # Changed from 400d to 100d
+            df = pt.download(sym, period="100d")
             if df is not None and not df.empty:
                 if isinstance(df.columns, pd.MultiIndex):
                     df.columns = df.columns.get_level_values(-1)
