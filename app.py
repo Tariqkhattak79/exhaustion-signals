@@ -2,10 +2,9 @@
 import pandas as pd
 import numpy as np
 import os
-import requests
 
 # ==========================================
-# LOGIC (From 2_exhaustion_logic.py)
+# LOGIC
 # ==========================================
 def calculate_volume_profile(df, bins=30):
     try:
@@ -80,9 +79,10 @@ def check_exhaustion_setup(file_path):
     return None
 
 # ==========================================
-# UI (From 5_mobile_app.py)
+# UI
 # ==========================================
-st.set_page_config(page_title="Exhaustion Setup", layout="centered")
+st.set_page_config(page_title="Exhaustion Signals", layout="centered")
+
 st.markdown("""
 <style>
     .stApp { background-color: #0E1117; color: white; }
@@ -95,12 +95,11 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.title("🔥 Live 3PM Scan")
+st.title("🔥 Exhaustion Signals")
 
 @st.cache_data(ttl=60)
 def get_signals():
     results = []
-    # On the cloud, data will be in the same folder
     if not os.path.exists("data"): return results
     files = [f for f in os.listdir("data") if f.endswith(".csv")]
     
@@ -111,15 +110,23 @@ def get_signals():
         if signal:
             signal["symbol"] = sym
             results.append(signal)
-    results.sort(key=lambda x: (x["category"] != "CAT A", -x["drop_pct"]))
     return results
 
 with st.spinner("Scanning stocks..."):
     signals = get_signals()
 
-st.markdown(f"### ! {len(signals)} LIVE SIGNALS")
+search_query = st.text_input("🔍 Search Symbol (e.g., PPL, ABL)", "").upper()
 
-for s in signals:
+# Separate into CAT A and CAT B
+cat_a_signals = [s for s in signals if s["category"] == "CAT A"]
+cat_b_signals = [s for s in signals if s["category"] == "CAT B"]
+
+# Filter by search
+if search_query:
+    cat_a_signals = [s for s in cat_a_signals if search_query in s['symbol']]
+    cat_b_signals = [s for s in cat_b_signals if search_query in s['symbol']]
+
+def render_card(s):
     cat_class = "cat-a" if s["category"] == "CAT A" else "cat-b"
     st.markdown(f"""
     <div class="signal-card">
@@ -147,3 +154,20 @@ for s in signals:
         </div>
     </div>
     """, unsafe_allow_html=True)
+
+# ==========================================
+# COLLAPSIBLE SECTIONS
+# ==========================================
+st.markdown(f"### ! {len(cat_a_signals) + len(cat_b_signals)} LIVE SIGNALS")
+
+with st.expander(f"🟢 CAT A ({len(cat_a_signals)} Signals)", expanded=True):
+    if not cat_a_signals:
+        st.write("No CAT A signals today.")
+    for s in cat_a_signals:
+        render_card(s)
+
+with st.expander(f"🟡 CAT B ({len(cat_b_signals)} Signals)", expanded=True):
+    if not cat_b_signals:
+        st.write("No CAT B signals today.")
+    for s in cat_b_signals:
+        render_card(s)
