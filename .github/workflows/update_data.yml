@@ -2,9 +2,8 @@
 
 on:
   schedule:
-    # 1:00 PM UTC is 6:00 PM Pakistan Time (PKT)
     - cron: '0 13 * * 1-5' 
-  workflow_dispatch: # Allows you to test it manually
+  workflow_dispatch: 
 
 jobs:
   update-data:
