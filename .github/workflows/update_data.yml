@@ -2,34 +2,22 @@
 
 on:
   schedule:
-    # 12:30 PM UTC is exactly 5:30 PM Pakistan Time (PKT)
-    - cron: '30 12 * * 1-5' 
-  workflow_dispatch: 
+    - cron: '30 12 * * 1-5'
+  workflow_dispatch:
 
 jobs:
   update-data:
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-          
-      - name: Install dependencies
-        run: |
-          pip install pandas pypsx-toolkit
-          
-      - name: Fetch Latest Data
-        run: python fetch_data.py
-          
-      - name: Commit and Push New Data
-        run: |
-          git config --global user.name "GitHub Action"
-          git config --global user.email "action@github.com"
+      - run: pip install pandas pypsx-toolkit
+      - run: python fetch_data.py
+      - run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
           git add data/
-          git commit -m "Auto-updated market data" || echo "No changes to commit"
+          git commit -m 'Auto-updated market data' || echo 'No changes'
           git push
