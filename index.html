@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>PSX Exhaustion Signals</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; background: #0f172a; color: #e2e8f0; padding: 15px; }
+        h2 { color: #38bdf8; text-align: center; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 14px; }
+        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #334155; }
+        th { background: #1e293b; color: #94a3b8; }
+        .catA { color: #22c55e; font-weight: bold; }
+        .catB { color: #f59e0b; }
+        .up { color: #22c55e; }
+        .down { color: #ef4444; }
+    </style>
+</head>
+<body>
+    <h2>📈 Exhaustion Signals</h2>
+    <table id="signalsTable">
+        <thead>
+            <tr>
+                <th>Symbol</th><th>Cat</th><th>Entry</th><th>Stop</th><th>Target</th><th>Drop</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td colspan="6">Loading data...</td></tr>
+        </tbody>
+    </table>
+
+    <script>
+        fetch('live_scan.json')
+            .then(response => response.json())
+            .then(data => {
+                const tbody = document.querySelector('#signalsTable tbody');
+                tbody.innerHTML = ''; 
+                if(data.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="6">No signals found today.</td></tr>';
+                    return;
+                }
+                data.sort((a, b) => (a.category !== 'CAT A') - (b.category !== 'CAT A'));
+                data.forEach(s => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = \
+                        <td><b>\</b></td>
+                        <td class="\">\</td>
+                        <td>\</td>
+                        <td class="down">\</td>
+                        <td class="up">\</td>
+                        <td>\%</td>
+                    \;
+                    tbody.appendChild(row);
+                });
+            })
+            .catch(error => {
+                document.querySelector('#signalsTable tbody').innerHTML = '<tr><td colspan="6">Error loading data. Make sure live_scan.json is in the same folder.</td></tr>';
+            });
+    </script>
+</body>
+</html>
