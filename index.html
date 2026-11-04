@@ -27,9 +27,9 @@
             <tr><td colspan="6">Loading data...</td></tr>
         </tbody>
     </table>
-
     <script>
-        fetch('live_scan.json')
+        // Using raw.githack to bypass CORS
+        fetch('https://raw.githack.com/Tariqkhattak79/exhaustion-signals/main/live_scan.json')
             .then(response => response.json())
             .then(data => {
                 const tbody = document.querySelector('#signalsTable tbody');
@@ -41,19 +41,19 @@
                 data.sort((a, b) => (a.category !== 'CAT A') - (b.category !== 'CAT A'));
                 data.forEach(s => {
                     const row = document.createElement('tr');
-                    row.innerHTML = \
-                        <td><b>\</b></td>
-                        <td class="\">\</td>
-                        <td>\</td>
-                        <td class="down">\</td>
-                        <td class="up">\</td>
-                        <td>\%</td>
-                    \;
+                    row.innerHTML = `
+                        <td><b>${s.symbol}</b></td>
+                        <td class="${s.category === 'CAT A' ? 'catA' : 'catB'}">${s.category}</td>
+                        <td>${s.entry}</td>
+                        <td class="down">${s.stop}</td>
+                        <td class="up">${s.target}</td>
+                        <td>${s.drop_pct}%</td>
+                    `;
                     tbody.appendChild(row);
                 });
             })
             .catch(error => {
-                document.querySelector('#signalsTable tbody').innerHTML = '<tr><td colspan="6">Error loading data. Make sure live_scan.json is in the same folder.</td></tr>';
+                document.querySelector('#signalsTable tbody').innerHTML = '<tr><td colspan="6">Error loading data. Check connection.</td></tr>';
             });
     </script>
 </body>
