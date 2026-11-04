@@ -1,0 +1,178 @@
+[
+    {
+        "entry": 461.94,
+        "stop": 444.26,
+        "target": 497.3,
+        "today_vol": 7759,
+        "prev_vol": 10116,
+        "drop_pct": 10.3,
+        "drop_days": 58,
+        "category": "CAT B",
+        "symbol": "BWCL"
+    },
+    {
+        "entry": 12.84,
+        "stop": 12.38,
+        "target": 25.77,
+        "today_vol": 41368,
+        "prev_vol": 64324,
+        "drop_pct": 51.9,
+        "drop_days": 57,
+        "category": "CAT B",
+        "symbol": "CJPL"
+    },
+    {
+        "entry": 11.97,
+        "stop": 11.38,
+        "target": 13.13,
+        "today_vol": 52074270,
+        "prev_vol": 114826728,
+        "drop_pct": 27.0,
+        "drop_days": 55,
+        "category": "CAT A",
+        "symbol": "CNERGY"
+    },
+    {
+        "entry": 9.93,
+        "stop": 9.6,
+        "target": 13.16,
+        "today_vol": 175246,
+        "prev_vol": 228105,
+        "drop_pct": 35.9,
+        "drop_days": 59,
+        "category": "CAT B",
+        "symbol": "DBCI"
+    },
+    {
+        "entry": 18.38,
+        "stop": 16.83,
+        "target": 22.12,
+        "today_vol": 765865,
+        "prev_vol": 1055843,
+        "drop_pct": 30.6,
+        "drop_days": 59,
+        "category": "CAT B",
+        "symbol": "GGL"
+    },
+    {
+        "entry": 15.48,
+        "stop": 15.06,
+        "target": 16.32,
+        "today_vol": 3262,
+        "prev_vol": 16644,
+        "drop_pct": 13.1,
+        "drop_days": 50,
+        "category": "CAT B",
+        "symbol": "ICCI"
+    },
+    {
+        "entry": 7.71,
+        "stop": 7.47,
+        "target": 8.38,
+        "today_vol": 95161,
+        "prev_vol": 142831,
+        "drop_pct": 16.1,
+        "drop_days": 42,
+        "category": "CAT B",
+        "symbol": "IREIT"
+    },
+    {
+        "entry": 40.39,
+        "stop": 37.74,
+        "target": 43.89,
+        "today_vol": 174073,
+        "prev_vol": 286516,
+        "drop_pct": 14.9,
+        "drop_days": 49,
+        "category": "CAT B",
+        "symbol": "KTML"
+    },
+    {
+        "entry": 116.91,
+        "stop": 112.76,
+        "target": 124.17,
+        "today_vol": 483977,
+        "prev_vol": 1209339,
+        "drop_pct": 13.4,
+        "drop_days": 47,
+        "category": "CAT A",
+        "symbol": "NETSOL"
+    },
+    {
+        "entry": 480.66,
+        "stop": 466.98,
+        "target": 620.11,
+        "today_vol": 931688,
+        "prev_vol": 2777354,
+        "drop_pct": 31.5,
+        "drop_days": 12,
+        "category": "CAT A",
+        "symbol": "NRL"
+    },
+    {
+        "entry": 15.24,
+        "stop": 14.8,
+        "target": 21.38,
+        "today_vol": 124469,
+        "prev_vol": 257659,
+        "drop_pct": 32.0,
+        "drop_days": 59,
+        "category": "CAT A",
+        "symbol": "PAKQATAR"
+    },
+    {
+        "entry": 10.0,
+        "stop": 9.06,
+        "target": 10.7,
+        "today_vol": 5320,
+        "prev_vol": 126083,
+        "drop_pct": 31.5,
+        "drop_days": 57,
+        "category": "CAT A",
+        "symbol": "PASM"
+    },
+    {
+        "entry": 23.32,
+        "stop": 22.67,
+        "target": 23.4,
+        "today_vol": 1971651,
+        "prev_vol": 2744920,
+        "drop_pct": 19.4,
+        "drop_days": 59,
+        "category": "CAT B",
+        "symbol": "PIAHCLA"
+    },
+    {
+        "entry": 23.59,
+        "stop": 21.93,
+        "target": 28.75,
+        "today_vol": 64225,
+        "prev_vol": 68875,
+        "drop_pct": 59.7,
+        "drop_days": 36,
+        "category": "CAT B",
+        "symbol": "PKGI"
+    },
+    {
+        "entry": 7.44,
+        "stop": 7.09,
+        "target": 9.47,
+        "today_vol": 379260,
+        "prev_vol": 555438,
+        "drop_pct": 30.4,
+        "drop_days": 58,
+        "category": "CAT B",
+        "symbol": "STPL"
+    },
+    {
+        "entry": 72.29,
+        "stop": 68.68,
+        "target": 73.74,
+        "today_vol": 3367725,
+        "prev_vol": 4622537,
+        "drop_pct": 18.6,
+        "drop_days": 39,
+        "category": "CAT B",
+        "symbol": "THCCL"
+    }
+]
